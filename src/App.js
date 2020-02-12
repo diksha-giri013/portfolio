@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Router } from '@reach/router';
+//import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useIsMobile, useLayout } from './commons/customHooks';
+import Header from './components/Header';
+import Dash from './components/Dash';
 
-export default App;
+export default function App() {
+	const display = useIsMobile();
+	const size = display.size;
+	const device = display.device;
+
+	const layout = useLayout();
+
+	const styles = {
+		app: { ...layout, height: size.height },
+	};
+
+	/*const Home = (props) => {
+		return (
+			<div>
+				<Header device={device} size={size} />
+			</div>
+		);
+	};*/
+
+	return (
+		<div style={styles.app}>
+			<Router>
+				<Header path='/:row/:item/:data' device={device} size={size} />
+				<Header path='/*' device={device} size={size} />
+			</Router>
+			<Dash device={device} size={size} />
+		</div>
+	);
+}

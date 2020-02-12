@@ -1,38 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Lekton|Darker+Grotesque|Quicksand:400,500|Almarai:300,400,800|Poiret+One&display=swap');
+
 .App {
-  text-align: center;
+	text-align: center;
+}
+
+.title-font {
+	font-family: 'Almarai', sans-serif;
+	font-weight: 800;
+	color: white;
+	font-size: 3rem;
+	text-shadow: 0.1rem 0.1rem 0.3rem #212121;
+}
+
+.logo-font {
+	margin: 0;
+	font-family: 'Poiret One', cursive;
+	font-weight: 400;
+	font-size: 3rem;
+	text-align: center;
+	color: #212121;
+}
+
+.zoom-on-hover:hover,
+.zoom-on-hover:focus {
+	transform: scale(1.2);
+}
+
+.zoom-on-hover:hover > span {
+	padding-right: 10%;
+	padding-top: 5rem;
+}
+
+.zoom-on-hover > span {
+	margin-right: 1.2rem;
+	margin-top: 1.5rem;
+}
+
+.hover-shadow {
+	transition: all 0.5s;
+}
+
+.hover-shadow:hover {
+	box-shadow: 0.1rem 0.1rem 0.5rem gainsboro;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	color: #61dafb;
 }
