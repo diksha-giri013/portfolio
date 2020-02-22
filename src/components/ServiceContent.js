@@ -1,4 +1,5 @@
 import React from 'react';
+import { getWAString } from './../commons/whatsappAPI';
 import {
 	getFontSize,
 	getPadding,
@@ -34,10 +35,12 @@ export default function ServiceContent(props) {
 		},
 		cta: {
 			width: 'max-content',
+			fontFamily: 'Quicksand, sans-serif',
+			fontWeight: '500',
 			padding: '1rem',
 			outline: 'none',
 			border: 'none',
-			fontSize: '1rem',
+			fontSize: '1.2rem',
 			backgroundColor: `${primary_color}`,
 			cursor: 'pointer',
 		},
@@ -51,7 +54,10 @@ export default function ServiceContent(props) {
 			</h3>
 			<p style={styles.example}>{content.ex}</p>
 			<p style={styles.description}>{content.desc}</p>
-			<button className='hover-shadow' style={styles.cta}>
+			<button
+				onClick={() => window.open(getWAString())}
+				className='hover-shadow'
+				style={styles.cta}>
 				{content.button}
 			</button>
 		</div>

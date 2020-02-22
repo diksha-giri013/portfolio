@@ -22,7 +22,7 @@ export function getPadding(device, size) {
 		case MOBILE:
 			return size * 0.5;
 		case TABLET:
-			return size * 0.7;
+			return size * 0.6;
 		case DESKTOP:
 		default:
 			return size * 1;

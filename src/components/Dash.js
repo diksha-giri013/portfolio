@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { device_types, services } from '../res/constants';
 import { getFontSize } from '../commons/cssVariables';
 import ServiceContent from './ServiceContent';
+import MobileContent from './MobileContent';
 
 export default function Dash(props) {
 	const [MOBILE, TABLET, DESKTOP] = [...device_types];
@@ -70,50 +71,6 @@ export default function Dash(props) {
 		);
 	};
 
-	const MobileItem = (props) => {
-		const [title, image, content] = [props.title, props.image, props.content];
-		const [isContentVisible, setContentVisible] = useState(false);
-		const [blur, setBlur] = useState('0px');
-
-		useEffect(() => {
-			isContentVisible ? setBlur('5px') : setBlur('0px');
-		}, [isContentVisible]);
-
-		return !isContentVisible ? (
-			<div
-				className='zoom-on-hover'
-				onClick={() => setContentVisible(true)}
-				style={{ ...styles.gridItemImage, backgroundImage: `url(${image})` }}>
-				<span style={styles.gridItemTitle}>{title}</span>{' '}
-			</div>
-		) : (
-			<>
-				<div
-					className='zoom-on-hover'
-					style={{
-						...styles.gridItemImage,
-						backgroundImage: `url(${image})`,
-						filter: `blur(${blur})`,
-					}}>
-					<div
-						style={{
-							height: '100%',
-							width: '100%',
-							backgroundColor: 'rgba(255, 255, 255, 0.3)',
-						}}></div>
-				</div>
-				<div onMouseLeave={() => setContentVisible(false)} style={{ position: 'relative' }}>
-					<div style={{ height: '100vh', position: 'absolute', bottom: '2px' }}>
-						<ServiceContent device={device} content={content} />{' '}
-						<button style={{ zIndex: '200' }} onClick={() => setContentVisible(false)}>
-							close
-						</button>
-					</div>
-				</div>
-			</>
-		);
-	};
-
 	ItemContent.propTypes = {
 		title: PropTypes.string,
 		image: PropTypes.string,
@@ -126,7 +83,9 @@ export default function Dash(props) {
 					{rows.map((item, index) => (
 						<div key={index} style={{ overflow: 'hidden', gridColumn: `span ${item.weight}` }}>
 							{device === MOBILE ? (
-								<MobileItem image={item.image} title={item.title} content={item.content} />
+								<Link to={`/mobile/${i}/${index}/${item.title}`}>
+									<ItemContent image={item.image} title={item.title} />
+								</Link>
 							) : (
 								<Link to={`/${i}/${index}/${item.title}`}>
 									<ItemContent image={item.image} title={item.title} />
@@ -136,6 +95,13 @@ export default function Dash(props) {
 					))}
 				</div>
 			))}
+			<div style={{ display: 'flex', height: `${window_height / 2}px` }}>
+				<div style={{ overflow: 'hidden', flex: '1', flexBasis: '1' }}>
+					<ItemContent image={services[0][0].image} title={'Team'} />
+				</div>
+				<div style={{ flex: '1', flexBasis: '1' }}>Aditya</div>
+				<div style={{ flex: '1', flexBasis: '1' }}>Diksha</div>
+			</div>
 		</div>
 	);
 }

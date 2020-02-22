@@ -11,8 +11,8 @@ export default function Header(props) {
 	const home = {
 		headerStart: 'Hi there! We can offer you',
 		header: 'solutions for branding and tech',
-		headerDesc: 'to Boost your Business',
-		desc: 'Home desc',
+		headerDesc: 'to Boost your Business.',
+		desc: 'Click on any of the services we offer to know more!',
 		ex: '',
 		button: "Let's Talk",
 	};
